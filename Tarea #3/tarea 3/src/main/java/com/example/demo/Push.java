@@ -11,9 +11,9 @@ public class Push {
 
     @RequestMapping(value = {"/push"})
     @ResponseBody
-    public ArrayList push(@RequestParam String type) {
+    public ArrayList push(@RequestParam String type, String name, String amount) {
 
-        return Metodos.add(People,type);
+        return Metodos.add(People,type,name,amount);
     }
     @RequestMapping(value = {"/pop"})
     @ResponseBody
@@ -26,6 +26,11 @@ public class Push {
     public ArrayList clear() {
 
         return Metodos.clear(People);
+    }
+    @RequestMapping(value = {"/show"})
+    @ResponseBody
+    public ArrayList show () {
+        return People;
     }
 
 }

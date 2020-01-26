@@ -3,7 +3,8 @@ package com.example.demo;
 import java.util.ArrayList;
 
 public class Metodos {
-    public static ArrayList  add (ArrayList People,String type){
+    public static ArrayList  add (ArrayList People,String type, String name,String amount){
+        String temp = type+ "-"+ name + "-" + amount;
         People.add(type);
         System.out.println(People);
         return People;
