@@ -12,9 +12,9 @@ public class Metodos {
     }
 
     public static ArrayList delete (ArrayList People){
-        String temporal = (String) People.get(0);
-        System.out.println(temporal);
-        People.remove(0);
+        if (People.size() != 0) {
+            People.remove(0);
+        }
         return People;
     }
     public static ArrayList clear (ArrayList People){

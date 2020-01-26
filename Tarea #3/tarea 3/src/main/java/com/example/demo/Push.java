@@ -15,13 +15,13 @@ public class Push {
 
         return Metodos.add(People,type);
     }
-    @RequestMapping(value = "/pop")
+    @RequestMapping(value = {"/pop"})
     @ResponseBody
     public ArrayList pop() {
 
         return Metodos.delete(People);
     }
-    @RequestMapping(value = "/clear")
+    @RequestMapping(value = {"/clear"})
     @ResponseBody
     public ArrayList clear() {
 
