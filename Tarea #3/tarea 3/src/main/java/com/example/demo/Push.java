@@ -4,33 +4,48 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 @Controller
 public class Push {
-    ArrayList<String> People = new ArrayList<String>();
+
+    String[] People = new String[0];
 
     @RequestMapping(value = {"/push"})
     @ResponseBody
-    public ArrayList push(@RequestParam String type, String name, String amount) {
-
-        return Metodos.add(People,type,name,amount);
+    public String push(@RequestParam String type, String name, String amount) {
+        String temp = type+ "-"+ name + "-" + amount;
+        People = Arrays.copyOf(People,People.length +1);
+        People[People.length-1] = temp;
+        for (int i = 0; i<People.length;i++){
+            System.out.println(People[i]);}
+        System.out.println("----------");
+        return "success";
     }
     @RequestMapping(value = {"/pop"})
     @ResponseBody
-    public ArrayList pop() {
-
-        return Metodos.delete(People);
+    public String pop() {
+        String result = "list is empty";
+        if (People.length != 0){
+        People = Arrays.copyOfRange(People, 1, People.length);
+        for (int i = 0; i<People.length;i++){
+            System.out.println(People[i]);}
+        System.out.println("----------");
+        result = "success";
+        }
+        return result;
     }
     @RequestMapping(value = {"/clear"})
     @ResponseBody
-    public ArrayList clear() {
+    public void clear() {
+        People = Arrays.copyOfRange(People, 0,0);
 
-        return Metodos.clear(People);
     }
     @RequestMapping(value = {"/show"})
     @ResponseBody
-    public ArrayList show () {
+    public String[]show () {
         return People;
     }
+
 
 }

@@ -1,12 +1,17 @@
 package com.example.demo;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import  java.util.Arrays;
 
 public class Metodos {
-    public static ArrayList  add (ArrayList People,String type, String name,String amount){
+    public static String[] add (int size, String type, String name, String amount,String[] People){
         String temp = type+ "-"+ name + "-" + amount;
-        People.add(type);
-        System.out.println(People);
+        Arrays.copyOf(People,People.length +1);
+        People[People.length] = temp;
+        for (int i = 0; i<size;i++){
+            System.out.println(People[i]);}
+
         return People;
 
 
